@@ -28,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RegistroUsuario.class));
             }
         });
-
+        // Ir a la pestaña de login
+        BotonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Login.class));
+            }
+        });
     }
 }

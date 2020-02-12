@@ -5,31 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".RegistroUsuario">
+    tools:context=".Login">
 
-    <!-- TextView: Label Registro -->
+    <!-- TextView: Label Login -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Register"
+        android:text="Login"
         android:textColor="#000" />
 
     <!-- EditText: Input Email -->
-        <com.google.android.material.textfield.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/emailTIL">
+        <EditText
+            android:id="@+id/emailEt"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:id="@+id/emailTIL">
-            <EditText
-                android:id="@+id/emailEt"
-                android:inputType="textEmailAddress"
-                android:hint="Email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
             />
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- EditText: Input Password -->
     <com.google.android.material.textfield.TextInputLayout
@@ -53,23 +53,43 @@
     <!-- Button: Registro usuario -->
 
     <Button
-        android:id="@+id/registerBtn"
-        android:text="Register"
+        android:id="@+id/loginBtn"
+        android:text="Login"
         android:layout_below="@id/passwordTIL"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <!-- TextView: Click para ir a la Activity de Login-->
+    <!-- TextView: Mostrar un cuadro de diálogo por si no recuerdas tu contraseña -->
+     <TextView
+         android:id="@+id/recoverPassTv"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textAlignment="center"
+         android:text="¿Has olvidado tu contraseña? Recupérala"
+         android:layout_below="@id/loginBtn" />
+
+    <!-- GogoleSignInButton: Entrar con una cuenta de Google -->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googleLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/recoverPassTv"
+        >
+    </com.google.android.gms.common.SignInButton>
+
+    <!-- TextView: Click para ir a la Activity de Registro-->
 
     <TextView
-        android:id="@+id/have_accountTv"
+        android:id="@+id/nothave_accountTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Alredy have account? Login"
+        android:text="Not have account? Register"
         android:textAlignment="center"
-        android:layout_below="@id/registerBtn"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
 
         />
 </RelativeLayout>
