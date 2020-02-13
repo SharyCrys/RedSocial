@@ -303,6 +303,7 @@ public class Login extends AppCompatActivity {
                                 hashMap.put("name", ""); //add
                                 hashMap.put("phone", ""); // add
                                 hashMap.put("image",  "");
+                                hashMap.put("cover",  "");
 
                                 // Instanciamos la base de datos de Firebase
                                 FirebaseDatabase database =  FirebaseDatabase.getInstance();

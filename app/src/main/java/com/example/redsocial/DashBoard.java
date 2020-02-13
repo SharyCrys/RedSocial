@@ -52,7 +52,7 @@ public class DashBoard extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     // Accionamos los botones de la barra de navegacion
-                    switch (menuItem.getItemId()){
+                    switch (menuItem.getItemId()) {
                         case R.id.nav_home:
                             // Fragmento home
                             actionBar.setTitle("Home");
@@ -80,7 +80,6 @@ public class DashBoard extends AppCompatActivity {
                             ft3.commit();
                             return true;
                     }
-
 
                     return false;
                 }
