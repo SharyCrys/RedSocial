@@ -34,7 +34,7 @@
                 android:layout_marginTop="100dp">
 
                 <ImageView
-                    android:id="@+id/avatarIv"
+                    android:id="@+id/avatarChat"
                     android:src="@drawable/ic_defualt_img_white"
                     android:layout_marginStart="20dp"
                     android:background="@color/colorPrimary"

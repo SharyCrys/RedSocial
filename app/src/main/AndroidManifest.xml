@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.redsocial">
     <!-- Internet Permission -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:fullBackupContent="@xml/backup_descriptor"
@@ -16,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ChatActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
+            />
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
@@ -24,7 +26,28 @@
             android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             tools:replace="android:launchMode" />
+
         <service android:name="com.google.firebase.components.ComponentDiscoveryService" />
+        <service android:name=".notifications.FirebaseService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="TODO">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_SERVICE"/>
+
+            </intent-filter>
+    </service>
+        <service android:name=".notifications.FirebaseMessaging"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="TODO">
+        <intent-filter>
+
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+
+        </service>
+
         <meta-data
             android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
             android:value="com.google.firebase.components.ComponentRegistrar" />
@@ -34,8 +57,8 @@
         <meta-data
             android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
             android:value="com.google.firebase.components.ComponentRegistrar" />
-        <activity android:name=".Login"></activity>
 
+        <activity android:name=".Login" />
         <activity android:name=".DashBoard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

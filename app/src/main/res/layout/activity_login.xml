@@ -27,7 +27,7 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/logo" />
 
 
@@ -65,14 +65,14 @@
 
     <Button
         android:id="@+id/loginBtn"
-        android:text="Login"
-        android:textColor="@color/colorWhite"
-        android:textAllCaps="false"
-        android:layout_marginTop="12dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_style"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
 
     <!-- TextView: Mostrar un cuadro de diálogo por si no recuerdas tu contraseña -->
      <TextView
@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="24dp"></com.google.android.gms.common.SignInButton>
+        android:layout_marginTop="8dp"></com.google.android.gms.common.SignInButton>
 
     <!-- TextView: Click para ir a la Activity de Registro-->
 

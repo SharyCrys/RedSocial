@@ -6,21 +6,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.redsocial.notifications.Token;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class DashBoard extends AppCompatActivity {
 
     // Firebase Auth
     FirebaseAuth firebaseAuth;
     ActionBar actionBar;
+    String mUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,25 @@ public class DashBoard extends AppCompatActivity {
         FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
         ft1.replace(R.id.content, fragment1, "");
         ft1.commit();
+
+        checkUserStatus();
+
+        // Actualizamos token
+        updateToken(FirebaseInstanceId.getInstance().getToken());
+
+    }
+
+    @Override
+    protected void onResume() {
+        checkUserStatus();
+        super.onResume();
+    }
+
+    public void updateToken(String token){
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token mToken = new Token(token);
+        reference.child(mUID).setValue(mToken);
 
     }
 
@@ -92,6 +117,11 @@ public class DashBoard extends AppCompatActivity {
             // Usuario logeado
             // Mostar el email del usuario logeado
             //mProfileTv.setText(user.getEmail());
+            mUID = user.getUid();
+            SharedPreferences sp = getSharedPreferences("SP_USER", MODE_PRIVATE);
+            SharedPreferences.Editor editor =  sp.edit();
+            editor.apply();
+
         } else {
             // Usuario no loegado, vuelve al MainActivity
             startActivity(new Intent(DashBoard.this, MainActivity.class));
@@ -112,22 +142,5 @@ public class DashBoard extends AppCompatActivity {
         super.onStart();
     }
 
-    // Inflamos las opciones del menu
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Cogemos el ID
-        int id = item.getItemId();
-        if (id == R.id.action_logout){
-            firebaseAuth.signOut();
-            checkUserStatus();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
