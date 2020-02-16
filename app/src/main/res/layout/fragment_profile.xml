@@ -88,6 +88,13 @@
     </ScrollView>
 
     <!-- Action Button -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Bienvenido a la pestaña de perfil. Por favor, introduce tus datos." />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
